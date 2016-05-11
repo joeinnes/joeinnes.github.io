@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# AUTHOR
+    Joe Innes
+
+# Thanks
+    Mike Byrne - Typewriter code: http://opticalcortex.com/not-built-with-jquery/
+    Alen Vuletic - Minto theme for Ghost: http://alen-vuletic.from.hr/minto-theme/
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Modernizr
