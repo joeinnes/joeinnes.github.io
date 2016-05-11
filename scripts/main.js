@@ -20,7 +20,7 @@ typewrite = function(el,text) {
 
 function flashCursor() {
   var cursor = document.getElementById('blinking-cursor');
-  cursor.style.display = cursor.style.display == 'none' ? 'inline' : 'none';
+  cursor.style.opacity = cursor.style.opacity == 0 ? 100 : 0;
   setTimeout(flashCursor, 700);
 }
 
