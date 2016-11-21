@@ -43,8 +43,8 @@ window.fetch('projects.json')
           }
         })
         .then((data) => {
-         if (data && data.content) {
-           let newStory = createCard(atob(data), baseUrl + item)
+         if (data) {
+           let newStory = createCard(data, baseUrl + item)
            resolve(newStory)
          } else {
            resolve()
