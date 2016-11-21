@@ -58,6 +58,7 @@ window.fetch('https://api.github.com/users/' + user + '/repos')
     })
   }))
   .then((data) => {
+    console.log(data)
     data.forEach((item) => {
       if (item) {
         document.getElementById('portfolio').appendChild(item)
