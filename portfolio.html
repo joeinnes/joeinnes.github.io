@@ -37,7 +37,7 @@ Promise.all(portfolio.map((item) => {
       .then((data) => data.json())
       .then((data) => {
        let newStory = createCard(data, baseUrl + item)
-        setTimeout(() => { resolve(newStory) } , 2000)
+          resolve(newStory)
       })
       .catch((err) => {
         console.error(err)
