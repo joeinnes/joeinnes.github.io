@@ -40,12 +40,15 @@ window.fetch('https://api.github.com/users/' + user + '/repos')
           if (data.status === 200) {
             return data.json()
           } else {
-            resolve()
+            return null
           }
         })
         .then((data) => {
-         let newStory = createCard(data, baseUrl + item)
-            resolve(newStory)
+         if (data) {
+           let newStory = createCard(data, baseUrl + item)
+           resolve(newStory)
+         } else {
+           resolve()
         })
         .catch((err) => {
           console.error(err)
