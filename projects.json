@@ -1,4 +1,5 @@
-[
+{
+  "projects": [
 "bubi-bikes",
 "weather-display",
 "simon-says",
@@ -6,3 +7,4 @@
 "random-quote",
 "voter-power-calculator"
 ]
+}
