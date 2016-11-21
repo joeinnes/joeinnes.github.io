@@ -42,6 +42,7 @@ Promise.all(portfolio.map((item) => {
       .catch((err) => {
         console.error(err)
       })
+  })
 })
 .then(() => {
   document.getElementById('loading').style.display = 'none'
