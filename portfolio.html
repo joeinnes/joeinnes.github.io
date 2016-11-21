@@ -31,7 +31,7 @@ const user = 'joeinnes'
 window.fetch('https://api.github.com/users/' + user + '/repos')
 .then((data) => data.json())
 .then((data) => {
-  let portfolio = data.sort((a, b) => new Date(a.updated_at) > new Date(b.updated_at))
+  let portfolio = data.sort((a, b) => new Date(a.updated_at) < new Date(b.updated_at))
   portfolio = portfolio.map((item) => item.name)
   Promise.all(portfolio.map((item) => {
     return new Promise((resolve, reject) => {
@@ -59,10 +59,8 @@ window.fetch('https://api.github.com/users/' + user + '/repos')
   }))
   .then((data) => {
     console.log(data)
-    data.forEach((item) => {
-      if (item) {
-        document.getElementById('portfolio').appendChild(item)
-      }
+    data.filter((item) => item !== undefined).forEach((item) => {
+      document.getElementById('portfolio').appendChild(item)
     })
     document.getElementById('loading').style.display = 'none'
   })
