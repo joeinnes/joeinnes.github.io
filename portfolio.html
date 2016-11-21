@@ -58,8 +58,9 @@ window.fetch('https://api.github.com/users/' + user + '/repos')
     })
   }))
   .then((data) => {
-    console.log(data)
-    data.filter((item) => item !== undefined).forEach((item) => {
+    let projects = data.filter((item) => item !== undefined)
+    console.log(projects)
+    projects.forEach((item) => {
       document.getElementById('portfolio').appendChild(item)
     })
     document.getElementById('loading').style.display = 'none'
