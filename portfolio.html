@@ -31,7 +31,7 @@ const user = 'joeinnes'
 window.fetch('https://api.github.com/users/' + user + '/repos')
 .then((data) => data.json())
 .then((data) => {
-  const portfolio = data.map((item) => item.name)
+  const portfolio = data.sort((a) => a.id > b.id).map((item) => item.name)
   Promise.all(portfolio.map((item) => {
     return new Promise((resolve, reject) => {
       window.fetch(baseUrl + item + '/project.json')
