@@ -27,40 +27,41 @@
     </section>
     <script>
 const baseUrl = 'https://joeinn.es/'
-const portfolio = [
-  'bubi-bikes', 
-  'weather-display',
-  'simon-says',
-  'pomodoro-timer',
-  'random-quote',
-  'voter-power-calculator'
-]
-Promise.all(portfolio.map((item) => {
-  return new Promise((resolve, reject) => {
-    window.fetch(baseUrl + item + '/project.json')
-      .then((data) => data.json())
-      .then((data) => {
-       let newStory = createCard(data, baseUrl + item)
-          resolve(newStory)
-      })
-      .catch((err) => {
-        console.error(err)
-        resolve()
-      })
-  })
-}))
+const org = 'joeinnes-portfolio'
+fetch('https://api.github.com/orgs/' + org + '/repos')
+.then((data) => data.json())
 .then((data) => {
-  data.forEach((item) => {
-    if (item) {
-      document.getElementById('portfolio').appendChild(item)
-    }
+  const portfolio = data.map((item) => item.name)
+  Promise.all(portfolio.map((item) => {
+    return new Promise((resolve, reject) => {
+      window.fetch(baseUrl + item + '/project.json')
+        .then((data) => data.json())
+        .then((data) => {
+         let newStory = createCard(data, baseUrl + item)
+            resolve(newStory)
+        })
+        .catch((err) => {
+          console.error(err)
+          resolve()
+        })
+    })
+  }))
+  .then((data) => {
+    data.forEach((item) => {
+      if (item) {
+        document.getElementById('portfolio').appendChild(item)
+      }
+    })
+    document.getElementById('loading').style.display = 'none'
   })
-  document.getElementById('loading').style.display = 'none'
+  .catch((err) => {
+    console.error('Something went terribly wrong: ' + err)
+  })
 })
 .catch((err) => {
-  console.error('Something went terribly wrong: ' + err)
-})
-
+    console.error('Something went terribly wrong: ' + err)
+  })
+      
 function createCard (data, url) {
   let card = document.createElement('div')
   card.classList.add('fl', 'w-100', 'w-50-ns')
