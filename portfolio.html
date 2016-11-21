@@ -31,8 +31,7 @@ const user = 'joeinnes'
 window.fetch('projects.json')
 .then((data) => data.json())
 .then((data) => {
-  const portfolio = data.map((item) => item.name)
-  Promise.all(portfolio.map((item) => {
+  Promise.all(data.map((item) => {
     return new Promise((resolve, reject) => {
       window.fetch('https://joeinn.es/' + item + '/project.json')
         .then((data) => {
