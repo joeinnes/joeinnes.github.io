@@ -57,7 +57,6 @@ window.fetch('projects.json')
   }))
   .then((data) => {
     let projects = data.filter((item) => item !== undefined)
-    console.log(projects)
     projects.forEach((item) => {
       document.getElementById('portfolio').appendChild(item)
     })
