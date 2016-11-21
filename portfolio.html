@@ -43,14 +43,20 @@ Promise.all(portfolio.map((item) => {
       })
       .catch((err) => {
         console.error(err)
+        resolve()
       })
   })
 }))
 .then((data) => {
   data.forEach((item) => {
-    document.getElementById('portfolio').appendChild(item)
+    if (item) {
+      document.getElementById('portfolio').appendChild(item)
+    }
   })
   document.getElementById('loading').style.display = 'none'
+})
+.catch((err) => {
+  console.error('Something went terribly wrong: ' + err)
 })
 
 function createCard (data, url) {
