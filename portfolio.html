@@ -99,7 +99,7 @@ function createCard (data, url) {
   let creditSectionHeader = document.createElement('h3')
   creditSectionHeader.innerText = 'With thanks to'
   let creditsList = document.createElement('section')
-  let creds = credits.sort((a, b) => a.name > b.name)
+  let creds = data.credits.sort((a, b) => a.name > b.name)
   creds.forEach((credit) => {
     let link = document.createElement('a')
     link.classList.add('link', 'b', 'no-underline', 'black', 'dib', 'pr3', 'hover-' + randomColour())
