@@ -30,6 +30,7 @@ const baseUrl = 'https://joeinn.es/'
 const portfolio = [
   'bubi-bikes', 
   'weather-display',
+  'pomodoro-timer',
   'random-quote'
 ]
 Promise.all(portfolio.map((item) => {
@@ -84,7 +85,8 @@ function createCard (data, url) {
 
   let techList = document.createElement('ul')
   techList.classList.add('list', 'pl0')
-  data.technologies_used.forEach((tech) => {
+  let techStack = data.technologies_used.sort((a, b) => a > b)
+  techStack.forEach((tech) => {
     let thisTech = document.createElement('li')
     thisTech.innerHTML = tech
     techList.appendChild(thisTech)
@@ -97,7 +99,8 @@ function createCard (data, url) {
   let creditSectionHeader = document.createElement('h3')
   creditSectionHeader.innerText = 'With thanks to'
   let creditsList = document.createElement('section')
-  data.credits.forEach((credit) => {
+  let creds = credits.sort((a, b) => a.name > b.name)
+  creds.forEach((credit) => {
     let link = document.createElement('a')
     link.classList.add('link', 'b', 'no-underline', 'black', 'dib', 'pr3', 'hover-' + randomColour())
     link.href = credit.link
