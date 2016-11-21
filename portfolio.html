@@ -35,7 +35,7 @@ window.fetch('https://api.github.com/users/' + user + '/repos')
   portfolio = portfolio.map((item) => item.name)
   Promise.all(portfolio.map((item) => {
     return new Promise((resolve, reject) => {
-      window.fetch(baseUrl + item + '/project.json')
+      window.fetch(baseUrl + item + '/content/project.json')
         .then((data) => {
           if (data.status === 200) {
             return data.json()
@@ -44,8 +44,8 @@ window.fetch('https://api.github.com/users/' + user + '/repos')
           }
         })
         .then((data) => {
-         if (data) {
-           let newStory = createCard(data, baseUrl + item)
+         if (data.content) {
+           let newStory = createCard(atob(data), baseUrl + item)
            resolve(newStory)
          } else {
            resolve()
