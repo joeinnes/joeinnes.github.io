@@ -28,7 +28,7 @@
     <script>
 const baseUrl = 'https://joeinn.es/'
 const user = 'joeinnes'
-window.fetch('https://api.github.com/user/' + user + '/repos')
+window.fetch('https://api.github.com/users/' + user + '/repos')
 .then((data) => data.json())
 .then((data) => {
   const portfolio = data.map((item) => item.name)
