@@ -49,6 +49,7 @@ window.fetch('https://api.github.com/users/' + user + '/repos')
            resolve(newStory)
          } else {
            resolve()
+         }
         })
         .catch((err) => {
           console.error(err)
