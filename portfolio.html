@@ -98,7 +98,7 @@ function createCard (data, url) {
     link.classList.add('link', 'b', 'no-underline', 'black', 'dib', 'pr3', 'hover-' + randomColour())
     link.href = credit.link
     link.innerText = credit.name
-    creditsList.append(link)
+    creditsList.appendChild(link)
   })
 
   creditSection.appendChild(creditSectionHeader)
