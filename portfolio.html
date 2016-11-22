@@ -27,10 +27,38 @@
 
     <section class="fl w-100" id="portfolio"></section>
   </section>
+  <div id="outdated">
+     <h6>Your browser is out-of-date!</h6>
+     <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+     <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+  </div>
   <script src="https://cdn.jsdelivr.net/bluebird/3.4.5/bluebird.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
-  <script src="https://unpkg.com/fetch-ie8"></script>
-  <script type="text/babel">
+  <script>
+  function addLoadEvent(func) {
+    var oldonload = window.onload;
+    if (typeof window.onload != 'function') {
+      window.onload = func;
+    } else {
+      window.onload = function() {
+        if (oldonload) {
+          oldonload();
+        }
+          func();
+        }
+     }
+  }
+//call plugin function after DOM ready
+  addLoadEvent(function(){
+    outdatedBrowser({
+      bgColor: '#f25648',
+      color: '#ffffff',
+      lowerThan: 'transform',
+      languagePath: ''
+    })
+  })
+  </script>
+  <script>
     const baseUrl = 'https://joeinn.es/'
     const user = 'joeinnes'
     window.fetch('projects.json')
