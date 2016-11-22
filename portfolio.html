@@ -28,9 +28,19 @@
   <section class="fl w-100" id="portfolio"></section>
   </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
-  <script type="text/babel">
+  <!-- 
+    OMG! WHAT IS HE DOING?
+    I just wanna write ES6 code.
+    I don't care if you have an old browser.
+    Yes, I could use Webpack, or browserify, or grunt, or gulp, or brunch, or hell, even plain old NPM scripts.
+    But I don't want to.
+
+    Haters gonna hate ᕕ( ᐛ )ᕗ
+  --> 
+  <script src="https://unpkg.com/bluebird"></script>
+  <script src="https://unpkg.com/fetch-ie8"></script>
+  <script src="https://unpkg.com/babel-standalone"></script>
+  <script type="text/babel" data-presets="es2015">
     const baseUrl = 'https://joeinn.es/'
     const user = 'joeinnes'
     window.fetch('projects.json')
