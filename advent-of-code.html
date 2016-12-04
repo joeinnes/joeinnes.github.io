@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Joe Innes | Advent of Code</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/app.css">
+
+<body>
+  <section class="cf pa3 mw9 center">
+    <header class="fn fl-ns pr4-ns">
+      <nav class="mb1 mt0 bt bw2">
+        <a href="/" class="link black fw9 dib mr3 f1 f-headline-ns">Joe Innes</a><br/>
+        <a href="/" class="link black-50 f4 f3-ns dib mr3">Home</a>
+        <a href="/portfolio" class="link black-50 f4 f3-ns dib mr3">Portfolio</a>
+        <a href="/advent-of-code" class="link black-50 f4 f3-ns dib mr3 underline">Advent of Code</a>
+      </nav>
+    </header>
+    <section class="fl w-100 pl6 pr6">
+      <article class="cf" id="list">
+        
+      </article>
+    </section>
+  </section>
+  <script>
+  var listOfLinks = [{
+      name: 'Day 4',
+      link: 'https://repl.it/embed/Ef5v/latest.js'
+  }, {
+      name: 'Day 3',
+      link: 'https://repl.it/embed/EfFW/latest.js'
+  }, {
+      name: 'Day 2',
+      link: 'https://repl.it/embed/EfFJ/latest.js'
+  }, {
+      name: 'Day 1',
+      link: 'https://repl.it/embed/EfFK/latest.js'
+  }]
+  listOfLinks.forEach((link) => {
+    var div = document.createElement('div')
+    div.classList.add('w-100', 'fl', 'tc', 'pa2')
+    var title = document.createElement('h2')
+    title.classList.add('f2')
+    title.innerText = link.name
+    div.appendChild(title)
+    var script = document.createElement('script')
+    script.src = link.link
+    div.appendChild(script)
+    document.getElementById('list').appendChild(div)
+  })
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-63929221-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
