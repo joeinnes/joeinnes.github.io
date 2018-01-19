@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "brunch watch --server",
-    "prod": "brunch build --production && git add . && git commit -m \"Updated app\" &&  git push origin `git subtree split --prefix public public master`:master --force"
+    "prod": "brunch build --production && git add . && git commit -m \"Updated app\" &&  git push origin `git subtree split --prefix public origin master`:master --force"
   },
   "dependencies": {
     "tachyons": "^4.5.5",
