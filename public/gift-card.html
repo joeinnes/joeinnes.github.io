@@ -33,7 +33,7 @@
         const data = JSON.parse(atob(window.location.hash.substring(1)))
         document.getElementById("blurb2").innerText = "Hi " + data.recipient + "! Your gift card number for " + data.amount + " at " + data.site + " is below!"
         document.getElementById("blurb").innerText = data.blurb
-        document.getElementById("code").innerText = data.code
+        document.getElementById("code").innerText = "Code: " + data.code
     } else {
         document.getElementById("blurb").innerText = "Check the link you were sent - this one isn't valid."
     }
