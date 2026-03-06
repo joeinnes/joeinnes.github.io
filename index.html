@@ -1,40 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Joe Innes | Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/vendor.css">
-<link rel="stylesheet" href="css/app.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>joeinnes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@300;400;600&display=swap');
 
-<body class="sans-serif">
-  <section class="cf pa3 mw9 center">
-    <header class="fn fl-ns pr4-ns">
-      <nav class="mb1 mt0 bt bw2">
-        <a href="/" class="link black fw9 dib mr3 f1 f-headline-ns">Joe Innes</a><br/>
-        <a href="/" class="link black-50 f4 f3-ns dib mr3 underline">Home</a>
-        <a href="/portfolio" class="link black-50 f4 f3-ns dib mr3">Portfolio</a>
-      </nav>
-    </header>
-    <section class="fl w-100">
-      <article class="cf">
-        <div class="fl w-100 w-50-ns">
-          <p class="lh-copy measure f4 f3-m f1-l pr1">Born in the UK, but living in Budapest, I'm delivering IT services for a living, and coding, taking photos, and writing in my spare time.</p>
-        </div>
-        <div class="fl w-100 w-50-ns">
-          <p class="lh-copy measure f4 f3-m f1-l pl1">Feel free to check out <a class="link grow dim br2 ph3 dib white mv1 bg-medium" href="https://blog.joeinn.es">my blog</a> or <a class="link grow dim br2 ph3 dib white mv1 bg-linkedin" href="https://blog.joeinn.es">my LinkedIn</a>. I retweet a load of stuff on <a class="link grow dim br2 ph3 dib white bg-twitter mv1" href="https://blog.joeinn.es">Twitter</a> and you can also visit my <a class="link grow dim br2 ph3 dib white bg-github mv1" href="https://blog.joeinn.es">GitHub profile</a>.</p>
-        </div>
-        <div class="fl w-100">
-          <p class="lh-copy measure f4 f3-m f1-ns pl1">Wanna get in touch? Drop me an email at <a href="mailto:joe@joeinn.es" class="link underline blue">joe@joeinn.es</a></p>
-        </div>
-      </article>
-    </section>
-  </section>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-63929221-2', 'auto');
-    ga('send', 'pageview');
-  </script>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber:      #c8a06a;
+      --amber-mid:  #6b4f2a;
+      --amber-dim:  #2a1e10;
+      --green:      #52e88a;
+      --green-mid:  #1e5c3a;
+      --green-dim:  #0a1f14;
+      --bg-l:       #0e0b07;
+      --bg-r:       #070e0a;
+      --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #050505;
+    }
+
+    /* ── LAYOUT ── */
+
+    .wrap {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 8vw, 6rem);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      flex: 1 1 50%;
+      transition: flex-basis 0.75s var(--ease), background 0.5s;
+    }
+
+    .wrap:has(.panel--personal:hover) .panel--personal { flex-basis: 64%; }
+    .wrap:has(.panel--personal:hover) .panel--cow      { flex-basis: 36%; }
+    .wrap:has(.panel--cow:hover)      .panel--cow      { flex-basis: 64%; }
+    .wrap:has(.panel--cow:hover)      .panel--personal { flex-basis: 36%; }
+
+    /* ── DIVIDER ── */
+
+    .divider {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        #1c1410 15%,
+        #1c1c18 50%,
+        #1c1410 85%,
+        transparent 100%);
+      z-index: 20;
+      pointer-events: none;
+      flex-shrink: 0;
+      transition: left 0.75s var(--ease);
+    }
+
+    /* ── LEFT PANEL — personal ── */
+
+    .panel--personal {
+      background: var(--bg-l);
+    }
+
+    /* grain texture */
+    .panel--personal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    /* warm radial glow, revealed on hover */
+    .panel--personal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 30% 55%, rgba(200, 160, 106, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s;
+    }
+
+    .panel--personal:hover::after { opacity: 1; }
+
+    .panel--personal .eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--amber-mid);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      position: relative;
+    }
+
+    .panel--personal .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6.5vw, 7.5rem);
+      font-weight: 300;
+      line-height: 0.92;
+      color: #e0d0b8;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .panel--personal .name em {
+      font-style: italic;
+      color: var(--amber);
+      display: block;
+    }
+
+    .panel--personal .tags {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.8rem, 1.15vw, 1rem);
+      color: var(--amber-mid);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      line-height: 2.4;
+      position: relative;
+    }
+
+    .panel--personal .cta {
+      position: absolute;
+      bottom: clamp(1.5rem, 3vw, 3rem);
+      right: clamp(1.5rem, 3vw, 3rem);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s 0.05s, transform 0.4s 0.05s;
+    }
+
+    .panel--personal:hover .cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RIGHT PANEL — cow ── */
+
+    .panel--cow {
+      background: var(--bg-r);
+    }
+
+    /* scanlines */
+    .panel--cow::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.07) 3px,
+        rgba(0, 0, 0, 0.07) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* green radial glow, revealed on hover */
+    .panel--cow::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 60% 50%, rgba(82, 232, 138, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s;
+      z-index: 2;
+    }
+
+    .panel--cow:hover::after { opacity: 1; }
+
+    .panel--cow .prompt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+      color: var(--green-mid);
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      position: relative;
+      z-index: 3;
+    }
+
+    .panel--cow .prompt .highlight { color: var(--green); opacity: 0.55; }
+
+    .panel--cow .cmd-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(3rem, 6.5vw, 7.5rem);
+      font-weight: 600;
+      line-height: 0.92;
+      color: var(--green);
+      margin-bottom: 2.5rem;
+      text-shadow: 0 0 50px rgba(82, 232, 138, 0.12);
+      transition: text-shadow 0.5s;
+      position: relative;
+      z-index: 3;
+    }
+
+    .panel--cow:hover .cmd-name {
+      text-shadow: 0 0 70px rgba(82, 232, 138, 0.22);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 0.45em;
+      height: 0.85em;
+      background: var(--green);
+      vertical-align: baseline;
+      margin-left: 0.1em;
+      opacity: 0.85;
+      animation: blink 1.15s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.85; }
+      50%       { opacity: 0;    }
+    }
+
+    .panel--cow .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.65rem, 1vw, 0.85rem);
+      color: var(--green-mid);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      line-height: 2.4;
+      position: relative;
+      z-index: 3;
+    }
+
+    .panel--cow .meta .highlight { color: var(--green); opacity: 0.6; }
+
+    .panel--cow .cta {
+      position: absolute;
+      bottom: clamp(1.5rem, 3vw, 3rem);
+      right: clamp(1.5rem, 3vw, 3rem);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+      letter-spacing: 0.08em;
+      color: var(--green);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s 0.05s, transform 0.4s 0.05s;
+      z-index: 3;
+    }
+
+    .panel--cow:hover .cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE — stack vertically ── */
+
+    @media (max-width: 640px) {
+      html, body { overflow: auto; }
+
+      .wrap {
+        flex-direction: column;
+        height: auto;
+        min-height: 100%;
+      }
+
+      .panel {
+        flex: none;
+        min-height: 50svh;
+        padding: 3rem 2rem;
+        transition: none;
+      }
+
+      .wrap:has(.panel--personal:hover) .panel--personal,
+      .wrap:has(.panel--personal:hover) .panel--cow,
+      .wrap:has(.panel--cow:hover) .panel--cow,
+      .wrap:has(.panel--cow:hover) .panel--personal {
+        flex-basis: auto;
+      }
+
+      .divider {
+        position: static;
+        left: auto;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right,
+          transparent 0%,
+          #1c1410 20%,
+          #1c1c18 50%,
+          #1c1410 80%,
+          transparent 100%);
+      }
+
+      .panel--personal .name,
+      .panel--cow .cmd-name {
+        font-size: clamp(3.5rem, 18vw, 6rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <a class="panel panel--personal" href="https://joeinn.es">
+      <div class="eyebrow">joeinn.es</div>
+      <div class="name">
+        Joe
+        <em>Innes</em>
+      </div>
+      <div class="tags">
+        blog<br>
+        now page<br>
+        writing
+      </div>
+      <div class="cta">visit &rarr;</div>
+    </a>
+
+    <div class="divider"></div>
+
+    <a class="panel panel--cow" href="https://joeinn.es/cow/">
+      <div class="prompt">~ <span class="highlight">$ cow --help</span></div>
+      <div class="cmd-name">cow<span class="cursor"></span></div>
+      <div class="meta">
+        <span class="highlight">workspace switcher</span><br>
+        CLI for macOS
+      </div>
+      <div class="cta">$ open &rarr;</div>
+    </a>
+
+  </div>
 </body>
 </html>
