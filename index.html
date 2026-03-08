@@ -5,137 +5,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joe Innes</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@300;400&display=swap');
+    @import url('https://fonts.bunny.net/css2?family=Raleway:wght@300;400;600;800;900&display=swap');
 
     :root {
-      --bg:   #0a0a0a;
-      --fg:   #f2ede4;
-      --red:  #e8150a;
-      --dim:  #4a4a4a;
-      --row:  #141414;
+      --bg:    #070707;
+      --side:  #0d0c0b;
+      --fg:    #ede9e3;
+      --dim:   #948e88;
+      --rule:  #161412;
+      --red:   #c94a1a;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
+      display: grid;
+      grid-template-columns: clamp(180px, 22vw, 300px) 1fr;
+      min-height: 100vh;
       background: var(--bg);
       color: var(--fg);
-      font-family: 'Barlow', sans-serif;
-      min-height: 100vh;
-      animation: body-in 0.5s ease both;
+      font-family: 'Raleway', sans-serif;
     }
 
-    @keyframes body-in {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* ── HEADER ── */
-
-    header {
-      position: relative;
-      overflow: hidden;
-      min-height: 280px;
+    /* ── SIDEBAR ── */
+    aside {
+      background: var(--side);
+      border-right: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      height: 100vh;
       display: flex;
-      align-items: flex-end;
-      padding: 0 clamp(1.5rem, 5vw, 2.5rem) 2.25rem;
-    }
-
-    header svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
     }
 
     h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(4.5rem, 17vw, 10.5rem);
-      line-height: 0.87;
-      letter-spacing: -0.025em;
+      font-weight: 900;
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
       text-transform: uppercase;
-      color: var(--fg);
-      position: relative;
-      z-index: 2;
     }
 
-    /* ── DIVIDER ── */
-
-    .divider {
-      padding: 0 clamp(1.5rem, 5vw, 2.5rem);
+    .side-meta {
+      margin-top: 1.25rem;
+      font-size: 0.54rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dim);
     }
 
-    .divider-inner {
+    /* ── MAIN ── */
+    main {
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      justify-content: center;
     }
 
-    .divider-inner span:first-child { display: block; height: 4px; background: var(--fg); }
-    .divider-inner span:last-child  { display: block; height: 1px; background: var(--red); }
-
-    /* ── LIST ── */
-
-    .list-wrap {
-      padding: 0 clamp(1.5rem, 5vw, 2.5rem) 6rem;
-      max-width: 900px;
+    .list-label {
+      font-size: 0.54rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.4rem;
     }
 
     ul { list-style: none; }
-
-    li {
-      display: grid;
-      grid-template-columns: 10.5rem 1fr auto;
-      align-items: baseline;
-      gap: 0 1.75rem;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--row);
-      position: relative;
-      opacity: 0;
-      animation: row-in 0.4s ease forwards;
-    }
-
-    li:nth-child(1) { animation-delay: 0.10s; }
-    li:nth-child(2) { animation-delay: 0.16s; }
-    li:nth-child(3) { animation-delay: 0.22s; }
-    li:nth-child(4) { animation-delay: 0.28s; }
-    li:nth-child(5) { animation-delay: 0.34s; }
-    li:nth-child(6) { animation-delay: 0.40s; }
-    li:nth-child(7) { animation-delay: 0.46s; }
-    li:nth-child(8) { animation-delay: 0.52s; }
-    li:nth-child(9) { animation-delay: 0.58s; }
 
     @keyframes row-in {
       from { opacity: 0; transform: translateX(-4px); }
       to   { opacity: 1; transform: translateX(0); }
     }
 
-    li:hover { background: rgba(232, 21, 10, 0.055); }
+    li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      column-gap: 1.5rem;
+      row-gap: 0.18rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      opacity: 0;
+      animation: row-in 0.35s ease forwards;
+    }
+
+    li:nth-child(1)  { animation-delay: 0.08s; }
+    li:nth-child(2)  { animation-delay: 0.14s; }
+    li:nth-child(3)  { animation-delay: 0.20s; }
+    li:nth-child(4)  { animation-delay: 0.26s; }
+    li:nth-child(5)  { animation-delay: 0.32s; }
+    li:nth-child(6)  { animation-delay: 0.38s; }
+    li:nth-child(7)  { animation-delay: 0.44s; }
+    li:nth-child(8)  { animation-delay: 0.50s; }
+    li:nth-child(9)  { animation-delay: 0.56s; }
+    li:nth-child(10) { animation-delay: 0.62s; }
+    li:nth-child(11) { animation-delay: 0.68s; }
+
     li:hover .proj-name { color: var(--red); }
 
     .proj-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
-      transition: color 0.12s;
+      grid-column: 1;
+      grid-row: 1;
+      transition: color 0.1s;
     }
 
     .proj-desc {
-      font-size: 0.82rem;
       font-weight: 300;
+      font-size: 0.76rem;
       color: var(--dim);
-      line-height: 1.4;
+      line-height: 1.35;
+      grid-column: 1;
+      grid-row: 2;
     }
 
     a.proj-link {
-      font-size: 0.72rem;
+      font-size: 0.64rem;
       font-weight: 400;
-      color: var(--red);
+      color: var(--dim);
       text-decoration: none;
       white-space: nowrap;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      text-align: right;
+      transition: color 0.1s;
     }
 
     a.proj-link::after {
@@ -144,77 +146,47 @@
       inset: 0;
     }
 
-    a.proj-link:hover { text-decoration: underline; }
-
-    /* ── FOOTER ── */
-
-    footer {
-      margin-top: 3.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-
-    footer span {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.6rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #2a2a2a;
-    }
+    a.proj-link:hover { color: var(--fg); }
 
     /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      body { grid-template-columns: 1fr; }
 
-    @media (max-width: 540px) {
-      header { min-height: 220px; }
+      aside {
+        position: static;
+        height: auto;
+        justify-content: flex-start;
+        padding-bottom: 1.25rem;
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+      }
 
       li {
         grid-template-columns: 1fr;
-        gap: 0.25rem;
-        padding: 0.9rem 0;
+        grid-template-rows: auto auto auto;
+        row-gap: 0.25rem;
       }
 
-      .proj-desc { color: #555; }
-      a.proj-link { white-space: normal; }
+      a.proj-link {
+        grid-column: 1;
+        grid-row: 3;
+        text-align: left;
+        white-space: normal;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <!-- Concentric quarter-arcs radiating from top-right — Müller-Brockmann -->
-    <svg viewBox="0 0 800 280" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Each arc: M (800−r),0  A r,r  0  0 1  800,r  (clamped at y=280) -->
-      <path d="M 720,0 A 80,80   0 0 1 800,80"  stroke="#e8150a" stroke-width="0.75" opacity="0.25"/>
-      <path d="M 640,0 A 160,160 0 0 1 800,160" stroke="#e8150a" stroke-width="1"    opacity="0.3"/>
-      <path d="M 560,0 A 240,240 0 0 1 800,240" stroke="#e8150a" stroke-width="1"    opacity="0.35"/>
-      <path d="M 480,0 A 320,320 0 0 1 800,280" stroke="#e8150a" stroke-width="1.5"  opacity="0.4"/>
-      <path d="M 400,0 A 400,400 0 0 1 800,280" stroke="#e8150a" stroke-width="1.5"  opacity="0.5"/>
-      <path d="M 320,0 A 480,480 0 0 1 800,280" stroke="#e8150a" stroke-width="2"    opacity="0.58"/>
-      <path d="M 240,0 A 560,560 0 0 1 800,280" stroke="#e8150a" stroke-width="2.5"  opacity="0.65"/>
-      <path d="M 160,0 A 640,640 0 0 1 800,280" stroke="#e8150a" stroke-width="3"    opacity="0.72"/>
-      <path d="M 80,0  A 720,720 0 0 1 800,280" stroke="#e8150a" stroke-width="3.5"  opacity="0.82"/>
-      <path d="M 0,0   A 800,800 0 0 1 800,280" stroke="#e8150a" stroke-width="4"    opacity="0.9"/>
-      <!-- Origin point -->
-      <circle cx="800" cy="0" r="5" fill="#e8150a" opacity="0.7"/>
-    </svg>
-
+  <aside>
     <h1>Joe<br>Innes</h1>
-  </header>
+    <p class="side-meta">joeinnes.github.io</p>
+  </aside>
 
-  <div class="divider">
-    <div class="divider-inner"><span></span><span></span></div>
-  </div>
-
-  <div class="list-wrap">
+  <main>
+    <div class="list-label">Projects</div>
     <ul>
-      <li>
-        <span class="proj-name">site</span>
-        <span class="proj-desc">blog, writing, now page</span>
-        <a class="proj-link" href="https://joeinn.es">joeinn.es</a>
-      </li>
-      <li>
+<li>
         <span class="proj-name">cow</span>
         <span class="proj-desc">copy-on-write workspace manager for macOS</span>
         <a class="proj-link" href="https://joeinnes.github.io/cow">joeinnes.github.io/cow</a>
@@ -254,21 +226,18 @@
         <span class="proj-desc">finds and aligns packages installed at multiple versions across pnpm projects</span>
         <a class="proj-link" href="https://joeinnes.github.io/pig">joeinnes.github.io/pig</a>
       </li>
+      <li>
+        <span class="proj-name">bkv&#8209;dashboard</span>
+        <span class="proj-desc">real-time Budapest bus and tram positions on a live map</span>
+        <a class="proj-link" href="https://bkv.joeinn.es">bkv.joeinn.es</a>
+      </li>
+      <li>
+        <span class="proj-name">checkings</span>
+        <span class="proj-desc">collaborative recurring-task tracker with real-time sync and invite-link sharing</span>
+        <a class="proj-link" href="https://checkings.innes.hu">checkings.innes.hu</a>
+      </li>
     </ul>
-
-    <footer>
-      <!-- miniature arc motif -->
-      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-        <path d="M 16,0 A 4,4   0 0 1 20,4"  stroke="#e8150a" stroke-width="1" opacity="0.4"/>
-        <path d="M 12,0 A 8,8   0 0 1 20,8"  stroke="#e8150a" stroke-width="1" opacity="0.55"/>
-        <path d="M 8,0  A 12,12 0 0 1 20,12" stroke="#e8150a" stroke-width="1" opacity="0.7"/>
-        <path d="M 4,0  A 16,16 0 0 1 20,16" stroke="#e8150a" stroke-width="1" opacity="0.85"/>
-        <path d="M 0,0  A 20,20 0 0 1 20,20" stroke="#e8150a" stroke-width="1" opacity="1"/>
-        <circle cx="20" cy="0" r="1.5" fill="#e8150a" opacity="0.6"/>
-      </svg>
-      <span>joeinnes.github.io</span>
-    </footer>
-  </div>
+  </main>
 
 </body>
 </html>
